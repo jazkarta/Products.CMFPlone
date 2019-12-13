@@ -36,7 +36,7 @@ define([
     },
     setupMobile: function() {
       var that = this;
-      that.$container.css('right', '-' + that.options.toolbar_width);
+      that.$container.css('left', '-' + that.options.toolbar_width);
       // make sure we are in expanded mode
       $('body').addClass(that.options.classNames.leftExpanded);
       $('body').addClass(that.options.classNames.expanded);
@@ -50,7 +50,7 @@ define([
         .on('click', function() {
           var $el = $(that.$el);
           if ($el.hasClass('open')) {
-            that.$container.css('right', '-' + that.options.toolbar_width);
+            that.$container.css('left', '-' + that.options.toolbar_width);
             $('html').css('margin-left', '0');
             $('html').css('margin-right', '0');
             $el.removeClass('open');
@@ -58,10 +58,10 @@ define([
               that.options.classNames.active
             );
           } else {
-            that.$container.css('right', '0');
+            that.$container.css('left', '0');
             $el.addClass('open');
-            $('html').css('margin-left', '-' + that.options.toolbar_width);
-            $('html').css('margin-right', that.options.toolbar_width);
+            $('html').css('margin-right', '-' + that.options.toolbar_width);
+            $('html').css('margin-left', that.options.toolbar_width);
           }
         });
       // Remove desktop event binding
@@ -77,9 +77,9 @@ define([
           e.stopPropagation();
           var $el = $(this).parent();
           if ($el.hasClass(that.options.classNames.active)) {
-            that.$container.css('right', '0');
-            $('html').css('margin-left', '-' + that.options.toolbar_width);
-            $('html').css('margin-right', that.options.toolbar_width);
+            that.$container.css('left', '0');
+            $('html').css('margin-right', '-' + that.options.toolbar_width);
+            $('html').css('margin-left', that.options.toolbar_width);
             $('nav li', that.$container).removeClass(
               that.options.classNames.active
             );
@@ -92,8 +92,8 @@ define([
             var margin =
               that.pxToInt(that.options.toolbar_width) +
               that.pxToInt(that.options.submenu_width);
-            $('html').css('margin-left', '-' + margin + 'px');
-            $('html').css('margin-right', +margin + 'px');
+            $('html').css('margin-right', '-' + margin + 'px');
+            $('html').css('margin-left', +margin + 'px');
           }
         });
     },
