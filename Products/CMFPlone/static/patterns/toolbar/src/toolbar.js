@@ -480,7 +480,11 @@ define([
           });
         });
 
+      var lastWidth = $(window).width();
       $(window).on('resize', function() {
+        if (lastWidth == $(window).width()) {
+          return;
+        }
         if (that.isDesktop()) {
           that.setupDesktop();
           if (!that.state.left) {
